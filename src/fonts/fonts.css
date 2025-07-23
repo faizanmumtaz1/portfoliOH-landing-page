@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Circular";
+  font-style: normal;
+  font-weight: 500;
+  src: url("circular-std-medium-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CircularStd-Light";
+  font-style: normal;
+  src: url("circular-std-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CircularStd-Book";
+  font-style: normal;
+  src: url("circular-std-book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CircularStd-Bold";
+  font-style: normal;
+  src: url("circular-std-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CircularStd-Medium";
+  font-style: normal;
+  src: url("circular-std-medium-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  src: url("Poppins-SemiBold.ttf") format("truetype");
+}

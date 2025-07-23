@@ -1,0 +1,137 @@
+/* ===== Minimal Reset CSS ===== */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Set default body styles */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+  background-color: #fff;
+  color: #000;
+  font-family: 'circularStdFont', sans-serif;
+
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Image handling */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Prevent text overflow */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove built-in focus outlines and apply custom if needed */
+:focus {
+  outline: none;
+}
+
+/* Set a consistent default height */
+html,
+body {
+  height: 100%;
+}
+
+
+.home-bg-Image {
+  background-image: url(../assets/homePageBg.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* overflow: hidden; */
+}
+
+
+.vertical-line {
+  height: 35px;
+  width: 1.5px;
+  background: #D0CCCC;
+}
+
+@media (max-width: 599.98px) {
+  .home-bg-Image {
+    background-image: url(../assets/homeBgMobile.jpg);
+    height: auto;
+  }
+
+  .vertical-line {
+    height: 26px;
+  }
+}
+
+
+@font-face {
+  font-family: 'circularStdFont';
+  src: url('../assets/font/CircularStd-Medium.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
