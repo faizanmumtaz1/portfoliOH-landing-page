@@ -45,13 +45,17 @@ const LandingPage = () => {
   ]
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "lg"));
   
   return (
     <div className="home-bg-Image">
       <Container sx={{
-        height: '100%',
         maxWidth: '100%',
         padding: '0 20px',
+        // Custom CSS for desktop view (above 1440px)
+        '@media (min-width: 1441px)': {
+          height: '100%',
+        },
         // Custom CSS for tablet view
         '@media (min-width: 600px) and (max-width: 1440px)': {
           padding: '0 40px',
@@ -64,20 +68,22 @@ const LandingPage = () => {
         }
       }}>
         <Stack
-          direction={isMobile ? "column" : "row"}
+          direction={isMobile || isTablet ? "column" : "row"}
           spacing={4}
           alignItems="center"
           justifyContent="center"
-          height={'100%'}
           sx={{
+            // Custom CSS for desktop view (above 1440px)
+            '@media (min-width: 1441px)': {
+              height: '100%',
+            },
             // Custom CSS for tablet view (600px to 1440px)
             '@media (min-width: 600px) and (max-width: 1440px)': {
-              flexDirection: 'row',
+              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '20px',
-              padding: '20px 0',
-              minHeight: '100vh',
+              justifyContent: 'center',
+              gap: '40px',
+              padding: '40px 0',
               width: '100%',
               maxWidth: '100%',
             },
@@ -91,19 +97,26 @@ const LandingPage = () => {
         >
           <Box 
             flex={1} 
-            textAlign={isMobile ? "center" : "left"}
+            textAlign={isMobile || isTablet ? "center" : "left"}
             sx={{
               width: '100%',
               maxWidth: '100%',
-              // Custom CSS for tablet view
-              '@media (min-width: 600px) and (max-width: 1440px)': {
-                flex: '0 0 45%',
-                maxWidth: '45%',
-                paddingRight: '15px',
+              // Custom CSS for desktop view (above 1440px)
+              '@media (min-width: 1441px)': {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 height: '100vh',
+              },
+              // Custom CSS for tablet view
+              '@media (min-width: 600px) and (max-width: 1440px)': {
+                flex: 'none',
+                maxWidth: '600px',
+                paddingRight: '0',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
               },
               // Custom CSS for mobile view
               '@media (max-width: 599px)': {
@@ -117,43 +130,44 @@ const LandingPage = () => {
               alignItems: 'center',
               gap: '10px',
               marginBottom: '30px',
-              justifyContent: isMobile ? 'center' : 'start',
+              justifyContent: isMobile || isTablet ? 'center' : 'start',
               paddingTop: isMobile ? '20px' : '0',
               // Custom CSS for tablet view
               '@media (min-width: 600px) and (max-width: 1440px)': {
-                justifyContent: 'start',
+                justifyContent: 'center',
                 paddingTop: '0',
                 flexWrap: 'wrap',
-                marginBottom: '25px',
+                marginBottom: '30px',
               }
             }}>
               <Image 
                 src={mainLogo} 
                 alt="logo" 
-                height={isMobile ? 26 : 36} 
-                width={isMobile ? 80 : 160} 
+                height={isMobile ? 26 : isTablet ? 32 : 36} 
+                width={isMobile ? 80 : isTablet ? 140 : 160} 
               />
               <span className="vertical-line"></span>
               <Image 
                 src={futureImage} 
                 alt="futureImage" 
-                height={isMobile ? 26 : 36} 
-                width={isMobile ? 150 : 207} 
+                height={isMobile ? 26 : isTablet ? 32 : 36} 
+                width={isMobile ? 150 : isTablet ? 180 : 207} 
               />
             </Box>
 
             <Typography variant="h1" sx={{
-              fontSize: isMobile ? '40px' : '60px',
+              fontSize: isMobile ? '40px' : isTablet ? '52px' : '60px',
               fontWeight: 'bold',
-              lineHeight: isMobile ? '42px' : '64px',
+              lineHeight: isMobile ? '42px' : isTablet ? '56px' : '64px',
               letterSpacing: '-4%',
               marginBottom: '30px',
               fontFamily: "'circularStdFont', sans-serif",
               // Custom CSS for tablet view
               '@media (min-width: 600px) and (max-width: 1440px)': {
-                fontSize: '48px',
-                lineHeight: '52px',
-                marginBottom: '25px',
+                fontSize: '52px',
+                lineHeight: '56px',
+                marginBottom: '30px',
+                textAlign: 'center',
               }
             }}>
               Find Your <span style={{ color: '#D84441' }}>Future</span>
@@ -169,17 +183,18 @@ const LandingPage = () => {
                 fontFamily: "'circularStdFont', sans-serif",
                 // Custom CSS for tablet view
                 '@media (min-width: 600px) and (max-width: 1440px)': {
-                  fontSize: '20px',
-                  lineHeight: '26px',
-                  marginBottom: '25px',
+                  fontSize: '22px',
+                  lineHeight: '28px',
+                  marginBottom: '30px',
+                  textAlign: 'center',
                 }
               }}>
               Discover your greatness with these 5 steps designed to align your strengths with the world of work. We call this building Actionable Hope.
             </Typography>
             <Box sx={{
               display: 'flex',
-              justifyContent: isMobile ? 'center' : 'start',
-              marginBottom: isMobile ? '40px' : 0
+              justifyContent: isMobile || isTablet ? 'center' : 'start',
+              marginBottom: isMobile || isTablet ? '40px' : 0
             }}>
               <Button
                 sx={{
@@ -200,8 +215,8 @@ const LandingPage = () => {
                   },
                   // Custom CSS for tablet view
                   '@media (min-width: 600px) and (max-width: 1440px)': {
-                    fontSize: '18px',
-                    padding: '14px 24px',
+                    fontSize: '19px',
+                    padding: '15px 26px',
                   }
                 }}
               >
@@ -228,30 +243,20 @@ const LandingPage = () => {
             sx={{
               width: '100%',
               maxWidth: '100%',
-              // Custom CSS for tablet view - add scroll and proper sizing
+              // Custom CSS for desktop view (above 1440px)
+              '@media (min-width: 1441px)': {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                height: '100vh',
+              },
+              // Custom CSS for tablet view - remove scroll and use full width
               '@media (min-width: 600px) and (max-width: 1440px)': {
-                flex: '0 0 55%',
-                maxWidth: '55%',
-                maxHeight: '100vh',
-                overflowY: 'auto',
-                paddingRight: '20px',
-                paddingLeft: '10px',
-                paddingTop: '20px',
-                // Custom scrollbar styling
-                '&::-webkit-scrollbar': {
-                  width: '8px',
-                },
-                '&::-webkit-scrollbar-track': {
-                  background: '#f1f1f1',
-                  borderRadius: '4px',
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  background: '#c1c1c1',
-                  borderRadius: '4px',
-                },
-                '&::-webkit-scrollbar-thumb:hover': {
-                  background: '#a8a8a8',
-                },
+                flex: 'none',
+                maxWidth: '600px',
+                paddingRight: '0',
+                paddingLeft: '0',
+                paddingTop: '0',
               },
               // Custom CSS for mobile view
               '@media (max-width: 599px)': {

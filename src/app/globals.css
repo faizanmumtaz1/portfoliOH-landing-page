@@ -128,6 +128,16 @@ body {
   }
 }
 
+@media (min-width: 600px) and (max-width: 1440px) {
+  .home-bg-Image {
+    background-image: url(../assets/homeBgMobile.jpg);
+    height: auto;
+  }
+
+  .vertical-line {
+    height: 26px;
+  }
+}
 
 @font-face {
   font-family: 'circularStdFont';
