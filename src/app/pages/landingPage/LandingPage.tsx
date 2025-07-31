@@ -20,12 +20,12 @@ const LandingPage = () => {
     {
       image: StepOneImage,
       title: 'Access',
-      description: 'Future Plans assessments reveal an individual’s strengths, abilities, interests, and values.'
+      description: 'Future Plans assessments reveal an individual\'s strengths, abilities, interests, and values.'
     },
     {
       image: StepTwoImage,
       title: 'Coach',
-      description: 'Future Plans assessments reveal an individual’s profile, showcasing their abilities, interests, personality, values, and strengths.'
+      description: 'Future Plans assessments reveal an individual\'s profile, showcasing their abilities, interests, personality, values, and strengths.'
     },
     {
       image: StepThreeImage,
@@ -45,10 +45,23 @@ const LandingPage = () => {
   ]
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
   return (
     <div className="home-bg-Image">
       <Container sx={{
         height: '100%',
+        maxWidth: '100%',
+        padding: '0 20px',
+        // Custom CSS for tablet view
+        '@media (min-width: 600px) and (max-width: 1440px)': {
+          padding: '0 40px',
+          maxWidth: '100%',
+        },
+        // Custom CSS for mobile view
+        '@media (max-width: 599px)': {
+          padding: '0 16px',
+          maxWidth: '100%',
+        }
       }}>
         <Stack
           direction={isMobile ? "column" : "row"}
@@ -56,19 +69,77 @@ const LandingPage = () => {
           alignItems="center"
           justifyContent="center"
           height={'100%'}
+          sx={{
+            // Custom CSS for tablet view (600px to 1440px)
+            '@media (min-width: 600px) and (max-width: 1440px)': {
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '20px',
+              padding: '20px 0',
+              minHeight: '100vh',
+              width: '100%',
+              maxWidth: '100%',
+            },
+            // Custom CSS for mobile view
+            '@media (max-width: 599px)': {
+              width: '100%',
+              maxWidth: '100%',
+              padding: '20px 0',
+            }
+          }}
         >
-          <Box flex={1} textAlign={isMobile ? "center" : "left"}>
+          <Box 
+            flex={1} 
+            textAlign={isMobile ? "center" : "left"}
+            sx={{
+              width: '100%',
+              maxWidth: '100%',
+              // Custom CSS for tablet view
+              '@media (min-width: 600px) and (max-width: 1440px)': {
+                flex: '0 0 45%',
+                maxWidth: '45%',
+                paddingRight: '15px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                height: '100vh',
+              },
+              // Custom CSS for mobile view
+              '@media (max-width: 599px)': {
+                width: '100%',
+                maxWidth: '100%',
+              }
+            }}
+          >
             <Box sx={{
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
               marginBottom: '30px',
               justifyContent: isMobile ? 'center' : 'start',
-              paddingTop: isMobile ? '20px' : '0'
+              paddingTop: isMobile ? '20px' : '0',
+              // Custom CSS for tablet view
+              '@media (min-width: 600px) and (max-width: 1440px)': {
+                justifyContent: 'start',
+                paddingTop: '0',
+                flexWrap: 'wrap',
+                marginBottom: '25px',
+              }
             }}>
-              <Image src={mainLogo} alt="logo" height={isMobile ? 26 : 36} width={isMobile ? 80 : 160} />
+              <Image 
+                src={mainLogo} 
+                alt="logo" 
+                height={isMobile ? 26 : 36} 
+                width={isMobile ? 80 : 160} 
+              />
               <span className="vertical-line"></span>
-              <Image src={futureImage} alt="futureImage" height={isMobile ? 26 : 36} width={isMobile ? 150 : 207} />
+              <Image 
+                src={futureImage} 
+                alt="futureImage" 
+                height={isMobile ? 26 : 36} 
+                width={isMobile ? 150 : 207} 
+              />
             </Box>
 
             <Typography variant="h1" sx={{
@@ -77,7 +148,13 @@ const LandingPage = () => {
               lineHeight: isMobile ? '42px' : '64px',
               letterSpacing: '-4%',
               marginBottom: '30px',
-              fontFamily: "'circularStdFont', sans-serif"
+              fontFamily: "'circularStdFont', sans-serif",
+              // Custom CSS for tablet view
+              '@media (min-width: 600px) and (max-width: 1440px)': {
+                fontSize: '48px',
+                lineHeight: '52px',
+                marginBottom: '25px',
+              }
             }}>
               Find Your <span style={{ color: '#D84441' }}>Future</span>
             </Typography>
@@ -89,9 +166,15 @@ const LandingPage = () => {
                 letterSpacing: '-0.8%',
                 color: '#5E5E5F',
                 marginBottom: '30px',
-                fontFamily: "'circularStdFont', sans-serif"
+                fontFamily: "'circularStdFont', sans-serif",
+                // Custom CSS for tablet view
+                '@media (min-width: 600px) and (max-width: 1440px)': {
+                  fontSize: '20px',
+                  lineHeight: '26px',
+                  marginBottom: '25px',
+                }
               }}>
-              Discover your greatness with these 5 steps designed to align your strengths with the work of work. We call this building Actionable Hope.
+              Discover your greatness with these 5 steps designed to align your strengths with the world of work. We call this building Actionable Hope.
             </Typography>
             <Box sx={{
               display: 'flex',
@@ -110,11 +193,16 @@ const LandingPage = () => {
                   borderRadius: '50px',
                   display: 'flex',
                   gap: '10px',
-                  textTransform: 'none', // optional: preserve casing
+                  textTransform: 'none',
                   transition: 'background 0.3s',
                   '&:hover': {
-                    background: '#5b00cc', // a slightly darker purple
+                    background: '#5b00cc',
                   },
+                  // Custom CSS for tablet view
+                  '@media (min-width: 600px) and (max-width: 1440px)': {
+                    fontSize: '18px',
+                    padding: '14px 24px',
+                  }
                 }}
               >
                 Get Started
@@ -134,7 +222,44 @@ const LandingPage = () => {
             </Box>
 
           </Box>
-          <Box flex={1} width="100%">
+          <Box 
+            flex={1} 
+            width="100%"
+            sx={{
+              width: '100%',
+              maxWidth: '100%',
+              // Custom CSS for tablet view - add scroll and proper sizing
+              '@media (min-width: 600px) and (max-width: 1440px)': {
+                flex: '0 0 55%',
+                maxWidth: '55%',
+                maxHeight: '100vh',
+                overflowY: 'auto',
+                paddingRight: '20px',
+                paddingLeft: '10px',
+                paddingTop: '20px',
+                // Custom scrollbar styling
+                '&::-webkit-scrollbar': {
+                  width: '8px',
+                },
+                '&::-webkit-scrollbar-track': {
+                  background: '#f1f1f1',
+                  borderRadius: '4px',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  background: '#c1c1c1',
+                  borderRadius: '4px',
+                },
+                '&::-webkit-scrollbar-thumb:hover': {
+                  background: '#a8a8a8',
+                },
+              },
+              // Custom CSS for mobile view
+              '@media (max-width: 599px)': {
+                width: '100%',
+                maxWidth: '100%',
+              }
+            }}
+          >
             {STEPS_DATA.map((data, index) => (
               <StepsItem key={index} data={data} />
             ))}
